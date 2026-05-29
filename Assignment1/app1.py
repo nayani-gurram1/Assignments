@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import pickle
+import os
 
-# Load model & preprocessors
-model = pickle.load(open("random_forest.pkl", "rb"))
-scaler = pickle.load(open("scaler.pkl", "rb"))
-columns = pickle.load(open("columns.pkl", "rb"))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model = pickle.load(open(os.path.join(BASE_DIR, "random_forest.pkl"), "rb"))
+scaler = pickle.load(open(os.path.join(BASE_DIR, "scaler.pkl"), "rb"))
+columns = pickle.load(open(os.path.join(BASE_DIR, "columns.pkl"), "rb"))
 
 st.set_page_config(page_title="Employee Attrition Predictor", layout="centered")
 
